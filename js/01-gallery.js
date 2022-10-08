@@ -3,15 +3,15 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
-const galleryList = document.querySelector("div.gallery");
+const galleryList = document.querySelector(".gallery");
 const elements = galleryItems
     .map( ({preview, original, description}) =>{
         return `<a class= "gallery_link" href= '${original}'>
         <img src = '${preview}' 
         data-source = '${original}' 
-        alt = '${description}/> 
+        alt = '${description}'/> 
         </a>'`;
-    })
+    }) 
     .join("");
 
 galleryList.insertAdjacentHTML("beforeend", elements);
@@ -32,7 +32,7 @@ instance.show()
 galleryList.addEventListener("keydown", closePictures);
 function closePictures(event) {
     if (event.code === 'ESCAPE') {
-        instance.close();
+        instance.close(); 
     }
 }
 console.log(galleryItems);
