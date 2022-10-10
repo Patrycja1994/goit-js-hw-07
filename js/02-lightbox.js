@@ -3,11 +3,12 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
  
-const gallery = document.querySelector(".gallery");
+const gallery = document.querySelector("ul.gallery");
 const elementsGallery = galleryItems
     .map( ({preview, original, description}) =>
-        `<a class= "gallery_link" href= '${original}'>
-        <img src = '${preview}' 
+        `<a class= "gallery__item" href= '${original}'>
+        <img class = "gallery__image"
+        src = '${preview}' 
         alt = '${description}' /> 
         </a>`)
     .join("");

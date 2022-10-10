@@ -3,15 +3,18 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
-const galleryList = document.querySelector(".gallery");
+const galleryList = document.querySelector("div.gallery");
 const elements = galleryItems
-    .map( ({preview, original, description}) =>{
-        return `<a class= "gallery_link" href= '${original}'>
-        <img src = '${preview}' 
-        data-source = '${original}' 
-        alt = '${description}'/> 
-        </a>'`;
-    }) 
+    .map( ({preview, original, description}) =>
+       `<div class= "gallery__item">
+        <a class="gallery__link" href= '${original}'>
+            <img class = "gallery__image"
+            src = '${preview}' 
+            data-source = '${original}' 
+            alt = '${description}'/> 
+        </a>
+        </div>`
+    ) 
     .join("");
 
 galleryList.insertAdjacentHTML("beforeend", elements);
@@ -26,13 +29,12 @@ function clickOpenPicture(event) {
     <img src="${event.target.dataset.source}" width="800" height="600">
 `);
 
-instance.show()
-}
+instance.show();
 
-galleryList.addEventListener("keydown", closePictures);
-function closePictures(event) {
-    if (event.code === 'ESCAPE') {
+galleryList.addEventListener("keydown", (event) => {
+    if (event.code === 'Escape') { 
         instance.close(); 
     }
+});
 }
 console.log(galleryItems);
